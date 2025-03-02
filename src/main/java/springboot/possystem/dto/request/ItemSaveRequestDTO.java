@@ -24,39 +24,23 @@ public class ItemSaveRequestDTO {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
 
     public MeasuringUnitType getMeasureUnit() {
         return measureUnit;
-    }
-
-    public void setMeasureUnit(MeasuringUnitType measureUnit) {
-        this.measureUnit = measureUnit;
     }
 
     public double getBalanceQty() {
         return balanceQty;
     }
 
-    public void setBalanceQty(double balanceQty) {
-        this.balanceQty = balanceQty;
-    }
 
     public double getSupplierPrice() {
         return supplierPrice;
     }
 
-    public void setSupplierPrice(double supplierPrice) {
-        this.supplierPrice = supplierPrice;
-    }
 
     public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
 }
