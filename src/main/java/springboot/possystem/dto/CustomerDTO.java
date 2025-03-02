@@ -2,13 +2,13 @@ package springboot.possystem.dto;
 
 import lombok.*;
 
-@NoArgsConstructor
-@Getter@Setter
+@Getter
+@Setter
 public class CustomerDTO {
     private int customerID;
-    private String CustomerName;
-    private String CustomerAddress;
-    private double CustomerSalary;
+    private String customerName;
+    private String customerAddress;
+    private double customerSalary;
     private String contactNumber;
     private String nic;
     private boolean active;
@@ -18,15 +18,15 @@ public class CustomerDTO {
     }
 
     public String getCustomerName() {
-        return CustomerName;
+        return customerName;
     }
 
     public String getCustomerAddress() {
-        return CustomerAddress;
+        return customerAddress;
     }
 
     public double getCustomerSalary() {
-        return CustomerSalary;
+        return customerSalary;
     }
 
     public String getContactNumber() {
@@ -41,39 +41,14 @@ public class CustomerDTO {
         return active;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public void setCustomerName(String customerName) {
-        CustomerName = customerName;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        CustomerAddress = customerAddress;
-    }
-
-    public void setCustomerSalary(double customerSalary) {
-        CustomerSalary = customerSalary;
-    }
-
-    public void setContactNumber(String contactNumbers) {
-        this.contactNumber = contactNumbers;
-    }
-
-    public void setNic(String nic) {
-        this.nic = nic;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public CustomerDTO() {
     }
 
     public CustomerDTO(int customerID, String customerName, String customerAddress, double customerSalary, String contactNumber, String nic, boolean active) {
         this.customerID = customerID;
-        CustomerName = customerName;
-        CustomerSalary = customerSalary;
-        CustomerAddress = customerAddress;
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.customerSalary = customerSalary;
         this.contactNumber = contactNumber;
         this.nic = nic;
         this.active = active;
