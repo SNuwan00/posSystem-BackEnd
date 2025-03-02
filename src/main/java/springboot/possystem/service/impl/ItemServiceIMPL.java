@@ -1,7 +1,11 @@
 package springboot.possystem.service.impl;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import springboot.possystem.dto.paginated.PaginatedResponseItemDTO;
 import springboot.possystem.dto.request.ItemSaveRequestDTO;
 import springboot.possystem.dto.response.ItemGetResponseDTO;
 import springboot.possystem.entity.Item;
@@ -16,6 +20,8 @@ public class ItemServiceIMPL implements ItemService {
 
     @Autowired
     private ItemRepo itemRepo;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public String saveItem(ItemSaveRequestDTO itemSaveRequestDTO) {
@@ -46,7 +52,7 @@ public class ItemServiceIMPL implements ItemService {
     }
 
     @Override
-    public List<ItemGetResponseDTO> getAllItems() {
+    public List<ItemGetResponseDTO> getAllItems(int page, int size) {
         List<Item> items = itemRepo.findAll();
         List<ItemGetResponseDTO> itemGetResponseDTOs = new ArrayList<>();
         for (Item item : items) {
@@ -61,5 +67,18 @@ public class ItemServiceIMPL implements ItemService {
             itemGetResponseDTOs.add(itemGetResponseDTO);
         }
         return itemGetResponseDTOs;
+    }
+
+    @Override
+    public PaginatedResponseItemDTO getAllActiveItemsPaginated(int page, int size, boolean activeState) {
+        return null;
+    }
+
+    @Override
+    public PaginatedResponseItemDTO getAllItemsWithPaginated(int page, int size) {
+        Page<Item> items = itemRepo.findAll(PageRequest.of(page, size));
+        if (items.getSize() < 1)
+            throw new RuntimeException("No items found");
+        return modelMapper.map(items, PaginatedResponseItemDTO.class);
     }
 }
